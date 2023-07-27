@@ -1,0 +1,23 @@
+name: TechTrends - Package with Docker
+on:
+  push:
+    branches:
+      - main
+      - master
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to docker
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build app with docker
+        run: |
+          cd project/techtrends &&
+          docker build . -t superknife0512/uda-techtrend:latest
+
+      - name: Push to docker hub
+        run: docker push superknife0512/uda-techtrend:latest
