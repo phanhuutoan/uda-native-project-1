@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/phanhuutoan/uda-native-project-1/
+    path: project/helm
+    targetRevision: HEAD
+    helm:
+      releaseName: techtrends
+      valueFiles:
+        - values-prod.yml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: prod
