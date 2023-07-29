@@ -18,6 +18,7 @@ spec:
       containers:
       - name: techtrend-pod
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 3111
         resources:
@@ -35,7 +36,7 @@ spec:
           periodSeconds: 3
         readinessProbe:
           httpGet:
-            path: {{ .Values.readiness.path }}
-            port: {{ .Values.readiness.path }}
+            path: {{ .Values.readinessProbe.path }}
+            port: {{ .Values.readinessProbe.port }}
           initialDelaySeconds: 3
           periodSeconds: 3

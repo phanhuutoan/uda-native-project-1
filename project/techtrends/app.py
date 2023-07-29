@@ -39,7 +39,7 @@ app.config['SECRET_KEY'] = 'your secret key'
 def helth_check():
     response = app.response_class(
         status=200,
-        response=json.dumps({"result": 'OK - healthy'}),
+        response=json.dumps({"result": 'OK - healthy Updated'}),
         mimetype='application/json'
     )
     return response

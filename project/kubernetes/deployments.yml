@@ -17,6 +17,7 @@ spec:
     spec:
       containers:
       - name: techtrend-pod
+        imagePullPolicy: Always
         image: superknife0512/uda-techtrend
         ports:
         - containerPort: 3111
