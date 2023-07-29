@@ -29,13 +29,13 @@ spec:
             cpu: {{ .Values.resources.requests.cpu }}
         livenessProbe:
           httpGet:
-            path: /healthz
-            port: 3111
+            path: {{ .Values.livenessProbe.path }}
+            port: {{ .Values.livenessProbe.port }}
           initialDelaySeconds: 3
           periodSeconds: 3
         readinessProbe:
           httpGet:
-            path: /healthz
-            port: 3111
+            path: {{ .Values.readiness.path }}
+            port: {{ .Values.readiness.path }}
           initialDelaySeconds: 3
           periodSeconds: 3

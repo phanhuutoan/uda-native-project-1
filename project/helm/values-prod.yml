@@ -10,3 +10,4 @@ resources:
   limit:
     cpu: 500m
     memory: 256Mi
+imagePullPolicy: Always

@@ -5,6 +5,8 @@ from werkzeug.exceptions import abort
 import json
 import logging
 
+import sys
+
 Connections = {"total_connections": 0}
 
 # Function to get a database connection.
@@ -113,6 +115,10 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
+    format_output = '%(levelname)s: %(name)-2s - [%(asctime)s] - %(message)s'
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    stderr_handler = logging.StreamHandler(sys.stderr)  
+    handlers = [stderr_handler, stdout_handler]
 
+    logging.basicConfig(level=logging.DEBUG, format=format_output, handlers=handlers)
     app.run(host='0.0.0.0', port='3111', debug=True)

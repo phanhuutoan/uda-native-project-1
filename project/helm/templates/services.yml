@@ -4,9 +4,10 @@ metadata:
   name: techtrends
   namespace: {{ .Values.namespace.name }}
 spec:
+  type: ClusterIP
   selector:
     app: techtrends
   ports:
-    - protocol: TCP
+    - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port }}
-      targetPort: 3111
+      targetPort: {{ .Values.service.targetPort }}

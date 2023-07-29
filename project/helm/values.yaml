@@ -77,8 +77,9 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+livenessProbe:
+  path: /healthz
+  port: 3111
+readinessProbe:
+  path: /healthz
+  port: 3111
